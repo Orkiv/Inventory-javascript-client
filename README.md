@@ -43,7 +43,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var InventoryClient = require('InventoryClient');
 
-var defaultClient = InventoryClient.ApiClient.default;
+var defaultClient = InventoryClient.ApiClient.instance;
 
 // Configure API key authorization: APIKey
 var APIKey = defaultClient.authentications['APIKey'];
