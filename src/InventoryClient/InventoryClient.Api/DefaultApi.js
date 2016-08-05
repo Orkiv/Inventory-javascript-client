@@ -25,18 +25,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['InventoryClient/ApiClient', 'InventoryClient/InventoryClient.model/InventoryGroup', 'InventoryClient/InventoryClient.model/Error', 'InventoryClient/InventoryClient.model/Response', 'InventoryClient/InventoryClient.model/Dictionary', 'InventoryClient/InventoryClient.model/Category', 'InventoryClient/InventoryClient.model/Item', 'InventoryClient/InventoryClient.model/Order', 'InventoryClient/InventoryClient.model/Service', 'InventoryClient/InventoryClient.model/EventRequest'], factory);
+    define(['InventoryClient/ApiClient', 'InventoryClient/InventoryClient.model/InventoryGroup', 'InventoryClient/InventoryClient.model/Error', 'InventoryClient/InventoryClient.model/Response', 'InventoryClient/InventoryClient.model/Category', 'InventoryClient/InventoryClient.model/Item', 'InventoryClient/InventoryClient.model/ItemRequest', 'InventoryClient/InventoryClient.model/Order', 'InventoryClient/InventoryClient.model/OrderRequest', 'InventoryClient/InventoryClient.model/Service', 'InventoryClient/InventoryClient.model/ServiceRequest', 'InventoryClient/InventoryClient.model/Variation', 'InventoryClient/InventoryClient.model/EventRequest'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../InventoryClient.model/InventoryGroup'), require('../InventoryClient.model/Error'), require('../InventoryClient.model/Response'), require('../InventoryClient.model/Dictionary'), require('../InventoryClient.model/Category'), require('../InventoryClient.model/Item'), require('../InventoryClient.model/Order'), require('../InventoryClient.model/Service'), require('../InventoryClient.model/EventRequest'));
+    module.exports = factory(require('../ApiClient'), require('../InventoryClient.model/InventoryGroup'), require('../InventoryClient.model/Error'), require('../InventoryClient.model/Response'), require('../InventoryClient.model/Category'), require('../InventoryClient.model/Item'), require('../InventoryClient.model/ItemRequest'), require('../InventoryClient.model/Order'), require('../InventoryClient.model/OrderRequest'), require('../InventoryClient.model/Service'), require('../InventoryClient.model/ServiceRequest'), require('../InventoryClient.model/Variation'), require('../InventoryClient.model/EventRequest'));
   } else {
     // Browser globals (root is window)
     if (!root.InventoryClient) {
       root.InventoryClient = {};
     }
-    root.InventoryClient.DefaultApi = factory(root.InventoryClient.ApiClient, root.InventoryClient.InventoryGroup, root.InventoryClient.Error, root.InventoryClient.Response, root.InventoryClient.Dictionary, root.InventoryClient.Category, root.InventoryClient.Item, root.InventoryClient.Order, root.InventoryClient.Service, root.InventoryClient.EventRequest);
+    root.InventoryClient.DefaultApi = factory(root.InventoryClient.ApiClient, root.InventoryClient.InventoryGroup, root.InventoryClient.Error, root.InventoryClient.Response, root.InventoryClient.Category, root.InventoryClient.Item, root.InventoryClient.ItemRequest, root.InventoryClient.Order, root.InventoryClient.OrderRequest, root.InventoryClient.Service, root.InventoryClient.ServiceRequest, root.InventoryClient.Variation, root.InventoryClient.EventRequest);
   }
-}(this, function(ApiClient, InventoryGroup, Error, Response, Dictionary, Category, Item, Order, Service, EventRequest) {
+}(this, function(ApiClient, InventoryGroup, Error, Response, Category, Item, ItemRequest, Order, OrderRequest, Service, ServiceRequest, Variation, EventRequest) {
   'use strict';
 
   /**
@@ -147,7 +147,7 @@
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:InventoryClient/InventoryClient.model/Dictionary} opts.query Category to query against system
+     * @param {module:InventoryClient/InventoryClient.model/Category} opts.query Category to query against system
      * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~categoriesPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {Array.<module:InventoryClient/InventoryClient.model/Category>}
      */
@@ -237,7 +237,7 @@
      */
 
     /**
-     * @param {module:InventoryClient/InventoryClient.model/Item} item Item to create.
+     * @param {module:InventoryClient/InventoryClient.model/ItemRequest} item Item to create.
      * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~itemAddPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:InventoryClient/InventoryClient.model/Item}
      */
@@ -280,7 +280,7 @@
      */
 
     /**
-     * @param {Array.<module:InventoryClient/InventoryClient.model/Item>} items Items to create.
+     * @param {Array.<module:InventoryClient/InventoryClient.model/ItemRequest>} items Items to create.
      * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~itemAddbulkPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:InventoryClient/InventoryClient.model/Response}
      */
@@ -359,6 +359,146 @@
     }
 
     /**
+     * Callback function to receive the result of the itemGet operation.
+     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~itemGetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:InventoryClient/InventoryClient.model/Item} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} id Item ID to open.
+     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~itemGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:InventoryClient/InventoryClient.model/Item}
+     */
+    this.itemGet = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling itemGet";
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'id': id
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['APIKey', 'AccountID'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Item;
+
+      return this.apiClient.callApi(
+        '/item/', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the itemMediaDelete operation.
+     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~itemMediaDeleteCallback
+     * @param {String} error Error message, if any.
+     * @param {module:InventoryClient/InventoryClient.model/Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} imageurl URL of image to remove
+     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~itemMediaDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:InventoryClient/InventoryClient.model/Response}
+     */
+    this.itemMediaDelete = function(imageurl, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'imageurl' is set
+      if (imageurl == undefined || imageurl == null) {
+        throw "Missing the required parameter 'imageurl' when calling itemMediaDelete";
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'imageurl': imageurl
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['APIKey', 'AccountID'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Response;
+
+      return this.apiClient.callApi(
+        '/item-media/', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the itemMediaPost operation.
+     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~itemMediaPostCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * This endpoint is currently in testing.
+     * @param {String} id Valid item id to bind image to.
+     * @param {File} image Image.
+     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~itemMediaPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {'String'}
+     */
+    this.itemMediaPost = function(id, image, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling itemMediaPost";
+      }
+
+      // verify the required parameter 'image' is set
+      if (image == undefined || image == null) {
+        throw "Missing the required parameter 'image' when calling itemMediaPost";
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'id': id
+      };
+      var headerParams = {
+      };
+      var formParams = {
+        'image': image
+      };
+
+      var authNames = ['APIKey', 'AccountID'];
+      var contentTypes = ['multipart/form-data', 'application/x-www-form-urlencoded'];
+      var accepts = ['application/json'];
+      var returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/item-media/', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the itemPut operation.
      * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~itemPutCallback
      * @param {String} error Error message, if any.
@@ -368,7 +508,7 @@
 
     /**
      * @param {String} id item id to update.
-     * @param {module:InventoryClient/InventoryClient.model/Dictionary} item New item information.
+     * @param {module:InventoryClient/InventoryClient.model/ItemRequest} item New item information.
      * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~itemPutCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:InventoryClient/InventoryClient.model/Response}
      */
@@ -418,7 +558,9 @@
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:InventoryClient/InventoryClient.model/Dictionary} opts.query Item to query against system.
+     * @param {Number} opts.minprice Min price of items to find
+     * @param {Number} opts.maxprice Max price of items to find
+     * @param {module:InventoryClient/InventoryClient.model/ItemRequest} opts.query Item to query against system.
      * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~itemsCountPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {'Number'}
      */
@@ -430,6 +572,8 @@
       var pathParams = {
       };
       var queryParams = {
+        'minprice': opts['minprice'],
+        'maxprice': opts['maxprice']
       };
       var headerParams = {
       };
@@ -458,7 +602,9 @@
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:InventoryClient/InventoryClient.model/Dictionary} opts.query Item to query against system.
+     * @param {Number} opts.minprice Min price of items to find
+     * @param {Number} opts.maxprice Max price of items to find
+     * @param {module:InventoryClient/InventoryClient.model/ItemRequest} opts.query Item to query against system.
      * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~itemsPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {Array.<module:InventoryClient/InventoryClient.model/Item>}
      */
@@ -470,6 +616,8 @@
       var pathParams = {
       };
       var queryParams = {
+        'minprice': opts['minprice'],
+        'maxprice': opts['maxprice']
       };
       var headerParams = {
       };
@@ -489,46 +637,6 @@
     }
 
     /**
-     * Callback function to receive the result of the itemsallfieldsPost operation.
-     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~itemsallfieldsPostCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:InventoryClient/InventoryClient.model/Dictionary>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {Object} opts Optional parameters
-     * @param {module:InventoryClient/InventoryClient.model/Dictionary} opts.query Item to query against system.
-     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~itemsallfieldsPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {Array.<module:InventoryClient/InventoryClient.model/Dictionary>}
-     */
-    this.itemsallfieldsPost = function(opts, callback) {
-      opts = opts || {};
-      var postBody = opts['query'];
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['APIKey', 'AccountID'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [Dictionary];
-
-      return this.apiClient.callApi(
-        '/items/?allfields', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the ordersPost operation.
      * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~ordersPostCallback
      * @param {String} error Error message, if any.
@@ -538,7 +646,7 @@
 
     /**
      * @param {Object} opts Optional parameters
-     * @param {module:InventoryClient/InventoryClient.model/Dictionary} opts.query Order to query against system.
+     * @param {module:InventoryClient/InventoryClient.model/OrderRequest} opts.query Order to query against item invoices.
      * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~ordersPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {Array.<module:InventoryClient/InventoryClient.model/Order>}
      */
@@ -569,6 +677,46 @@
     }
 
     /**
+     * Callback function to receive the result of the ordersServicesPost operation.
+     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~ordersServicesPostCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:InventoryClient/InventoryClient.model/Order>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {Object} opts Optional parameters
+     * @param {module:InventoryClient/InventoryClient.model/OrderRequest} opts.query Order to query against service invoices.
+     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~ordersServicesPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {Array.<module:InventoryClient/InventoryClient.model/Order>}
+     */
+    this.ordersServicesPost = function(opts, callback) {
+      opts = opts || {};
+      var postBody = opts['query'];
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['APIKey', 'AccountID'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [Order];
+
+      return this.apiClient.callApi(
+        '/orders/services/', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the queryPost operation.
      * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~queryPostCallback
      * @param {String} error Error message, if any.
@@ -582,9 +730,9 @@
      * @param {String} opts.categoryid Get items under specified category id.
      * @param {String} opts.sort Comma delimited Sort string. ie ; +ordprice. Please use number based fields only
      * @param {String} opts.search Performs a regex pattern match against the items within your account
-     * @param {Number} opts.minprice Min price in hundreds.
-     * @param {Number} opts.maxprice Max price in hudreds.
-     * @param {module:InventoryClient/InventoryClient.model/Dictionary} opts.query Custom parameters to query against system.
+     * @param {Number} opts.minprice Min price in hundreds (cents).
+     * @param {Number} opts.maxprice Max price in hundreds (cents).
+     * @param {module:InventoryClient/InventoryClient.model/ItemRequest} opts.query Custom parameters to query against system.
      * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~queryPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {Array.<module:InventoryClient/InventoryClient.model/Item>}
      */
@@ -615,58 +763,6 @@
 
       return this.apiClient.callApi(
         '/query/', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the queryallfieldsPost operation.
-     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~queryallfieldsPostCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:InventoryClient/InventoryClient.model/Dictionary>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.page Current page index.
-     * @param {String} opts.categoryid Get items under specified category id.
-     * @param {String} opts.sort Comma delimited Sort string. ie ; +ordprice. Please use number based fields only
-     * @param {String} opts.search Performs a regex pattern match against the items within your account
-     * @param {Number} opts.minprice Min price in hundreds.
-     * @param {Number} opts.maxprice Max price in hudreds.
-     * @param {module:InventoryClient/InventoryClient.model/Dictionary} opts.query Custom parameters to query against system.
-     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~queryallfieldsPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {Array.<module:InventoryClient/InventoryClient.model/Dictionary>}
-     */
-    this.queryallfieldsPost = function(opts, callback) {
-      opts = opts || {};
-      var postBody = opts['query'];
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'page': opts['page'],
-        'categoryid': opts['categoryid'],
-        'sort': opts['sort'],
-        'search': opts['search'],
-        'minprice': opts['minprice'],
-        'maxprice': opts['maxprice']
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['APIKey', 'AccountID'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [Dictionary];
-
-      return this.apiClient.callApi(
-        '/query/?allfields', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -754,6 +850,50 @@
     }
 
     /**
+     * Callback function to receive the result of the servicesOpenGet operation.
+     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~servicesOpenGetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:InventoryClient/InventoryClient.model/Service} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} id ID of service to open
+     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~servicesOpenGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:InventoryClient/InventoryClient.model/Service}
+     */
+    this.servicesOpenGet = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling servicesOpenGet";
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'id': id
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['APIKey', 'AccountID'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Service;
+
+      return this.apiClient.callApi(
+        '/services/open/', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the servicesPost operation.
      * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~servicesPostCallback
      * @param {String} error Error message, if any.
@@ -762,7 +902,7 @@
      */
 
     /**
-     * @param {module:InventoryClient/InventoryClient.model/Service} service Service to create.
+     * @param {module:InventoryClient/InventoryClient.model/ServiceRequest} service Service to create.
      * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~servicesPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:InventoryClient/InventoryClient.model/Service}
      */
@@ -806,7 +946,7 @@
 
     /**
      * @param {String} id ID of the service to update
-     * @param {module:InventoryClient/InventoryClient.model/Service} service New service data to set.
+     * @param {module:InventoryClient/InventoryClient.model/ServiceRequest} service New service data to set.
      * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~servicesPutCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:InventoryClient/InventoryClient.model/Response}
      */
@@ -841,6 +981,194 @@
 
       return this.apiClient.callApi(
         '/services/', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the variationDelete operation.
+     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~variationDeleteCallback
+     * @param {String} error Error message, if any.
+     * @param {module:InventoryClient/InventoryClient.model/Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} id variation id to remove
+     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~variationDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:InventoryClient/InventoryClient.model/Response}
+     */
+    this.variationDelete = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling variationDelete";
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'id': id
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['APIKey', 'AccountID'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Response;
+
+      return this.apiClient.callApi(
+        '/variation/', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the variationGet operation.
+     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~variationGetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:InventoryClient/InventoryClient.model/Variation} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} id Variation ID to open.
+     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~variationGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:InventoryClient/InventoryClient.model/Variation}
+     */
+    this.variationGet = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling variationGet";
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'id': id
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['APIKey', 'AccountID'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Variation;
+
+      return this.apiClient.callApi(
+        '/variation/', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the variationPost operation.
+     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~variationPostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:InventoryClient/InventoryClient.model/Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} id Valid item id to bind variation to.
+     * @param {module:InventoryClient/InventoryClient.model/Variation} item Variation information.
+     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~variationPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:InventoryClient/InventoryClient.model/Response}
+     */
+    this.variationPost = function(id, item, callback) {
+      var postBody = item;
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling variationPost";
+      }
+
+      // verify the required parameter 'item' is set
+      if (item == undefined || item == null) {
+        throw "Missing the required parameter 'item' when calling variationPost";
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'id': id
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['APIKey', 'AccountID'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Response;
+
+      return this.apiClient.callApi(
+        '/variation/', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the variationPut operation.
+     * @callback module:InventoryClient/InventoryClient.Api/DefaultApi~variationPutCallback
+     * @param {String} error Error message, if any.
+     * @param {module:InventoryClient/InventoryClient.model/Response} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} id variation id to update.
+     * @param {module:InventoryClient/InventoryClient.model/Variation} item New variation information.
+     * @param {module:InventoryClient/InventoryClient.Api/DefaultApi~variationPutCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:InventoryClient/InventoryClient.model/Response}
+     */
+    this.variationPut = function(id, item, callback) {
+      var postBody = item;
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling variationPut";
+      }
+
+      // verify the required parameter 'item' is set
+      if (item == undefined || item == null) {
+        throw "Missing the required parameter 'item' when calling variationPut";
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'id': id
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['APIKey', 'AccountID'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Response;
+
+      return this.apiClient.callApi(
+        '/variation/', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

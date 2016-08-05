@@ -25,12 +25,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['InventoryClient/ApiClient', 'InventoryClient/InventoryClient.model/Category', 'InventoryClient/InventoryClient.model/Dictionary', 'InventoryClient/InventoryClient.model/Error', 'InventoryClient/InventoryClient.model/EventRequest', 'InventoryClient/InventoryClient.model/InventoryGroup', 'InventoryClient/InventoryClient.model/Item', 'InventoryClient/InventoryClient.model/Order', 'InventoryClient/InventoryClient.model/Response', 'InventoryClient/InventoryClient.model/Service', 'InventoryClient/InventoryClient.Api/DefaultApi'], factory);
+    define(['InventoryClient/ApiClient', 'InventoryClient/InventoryClient.model/Category', 'InventoryClient/InventoryClient.model/Error', 'InventoryClient/InventoryClient.model/EventRequest', 'InventoryClient/InventoryClient.model/InventoryGroup', 'InventoryClient/InventoryClient.model/Item', 'InventoryClient/InventoryClient.model/ItemRequest', 'InventoryClient/InventoryClient.model/Order', 'InventoryClient/InventoryClient.model/OrderRequest', 'InventoryClient/InventoryClient.model/Response', 'InventoryClient/InventoryClient.model/Service', 'InventoryClient/InventoryClient.model/ServiceRequest', 'InventoryClient/InventoryClient.model/Variation', 'InventoryClient/InventoryClient.Api/DefaultApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./InventoryClient.model/Category'), require('./InventoryClient.model/Dictionary'), require('./InventoryClient.model/Error'), require('./InventoryClient.model/EventRequest'), require('./InventoryClient.model/InventoryGroup'), require('./InventoryClient.model/Item'), require('./InventoryClient.model/Order'), require('./InventoryClient.model/Response'), require('./InventoryClient.model/Service'), require('./InventoryClient.Api/DefaultApi'));
+    module.exports = factory(require('./ApiClient'), require('./InventoryClient.model/Category'), require('./InventoryClient.model/Error'), require('./InventoryClient.model/EventRequest'), require('./InventoryClient.model/InventoryGroup'), require('./InventoryClient.model/Item'), require('./InventoryClient.model/ItemRequest'), require('./InventoryClient.model/Order'), require('./InventoryClient.model/OrderRequest'), require('./InventoryClient.model/Response'), require('./InventoryClient.model/Service'), require('./InventoryClient.model/ServiceRequest'), require('./InventoryClient.model/Variation'), require('./InventoryClient.Api/DefaultApi'));
   }
-}(function(ApiClient, Category, Dictionary, Error, EventRequest, InventoryGroup, Item, Order, Response, Service, DefaultApi) {
+}(function(ApiClient, Category, Error, EventRequest, InventoryGroup, Item, ItemRequest, Order, OrderRequest, Response, Service, ServiceRequest, Variation, DefaultApi) {
   'use strict';
 
   /**
@@ -76,11 +76,6 @@
      */
     Category: Category,
     /**
-     * The Dictionary model constructor.
-     * @property {module:InventoryClient/InventoryClient.model/Dictionary}
-     */
-    Dictionary: Dictionary,
-    /**
      * The Error model constructor.
      * @property {module:InventoryClient/InventoryClient.model/Error}
      */
@@ -101,10 +96,20 @@
      */
     Item: Item,
     /**
+     * The ItemRequest model constructor.
+     * @property {module:InventoryClient/InventoryClient.model/ItemRequest}
+     */
+    ItemRequest: ItemRequest,
+    /**
      * The Order model constructor.
      * @property {module:InventoryClient/InventoryClient.model/Order}
      */
     Order: Order,
+    /**
+     * The OrderRequest model constructor.
+     * @property {module:InventoryClient/InventoryClient.model/OrderRequest}
+     */
+    OrderRequest: OrderRequest,
     /**
      * The Response model constructor.
      * @property {module:InventoryClient/InventoryClient.model/Response}
@@ -115,6 +120,16 @@
      * @property {module:InventoryClient/InventoryClient.model/Service}
      */
     Service: Service,
+    /**
+     * The ServiceRequest model constructor.
+     * @property {module:InventoryClient/InventoryClient.model/ServiceRequest}
+     */
+    ServiceRequest: ServiceRequest,
+    /**
+     * The Variation model constructor.
+     * @property {module:InventoryClient/InventoryClient.model/Variation}
+     */
+    Variation: Variation,
     /**
      * The DefaultApi service constructor.
      * @property {module:InventoryClient/InventoryClient.Api/DefaultApi}

@@ -39,7 +39,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new InventoryClient.Item();
+    instance = new InventoryClient.ServiceRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -58,70 +58,34 @@
       object[property] = value;
   }
 
-  describe('Item', function() {
-    it('should create an instance of Item', function() {
-      // uncomment below and update the code to test Item
-      //var instane = new InventoryClient.Item();
-      //expect(instance).to.be.a(InventoryClient.Item);
+  describe('ServiceRequest', function() {
+    it('should create an instance of ServiceRequest', function() {
+      // uncomment below and update the code to test ServiceRequest
+      //var instane = new InventoryClient.ServiceRequest();
+      //expect(instance).to.be.a(InventoryClient.ServiceRequest);
     });
 
-    it('should have the property id (base name: "id")', function() {
-      // uncomment below and update the code to test the property id
-      //var instane = new InventoryClient.Item();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property category (base name: "category")', function() {
-      // uncomment below and update the code to test the property category
-      //var instane = new InventoryClient.Item();
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instane = new InventoryClient.ServiceRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property desc (base name: "desc")', function() {
       // uncomment below and update the code to test the property desc
-      //var instane = new InventoryClient.Item();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new InventoryClient.Item();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property ordprice (base name: "ordprice")', function() {
-      // uncomment below and update the code to test the property ordprice
-      //var instane = new InventoryClient.Item();
+      //var instane = new InventoryClient.ServiceRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property price (base name: "price")', function() {
       // uncomment below and update the code to test the property price
-      //var instane = new InventoryClient.Item();
+      //var instane = new InventoryClient.ServiceRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property variations (base name: "variations")', function() {
-      // uncomment below and update the code to test the property variations
-      //var instane = new InventoryClient.Item();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property quantity (base name: "quantity")', function() {
-      // uncomment below and update the code to test the property quantity
-      //var instane = new InventoryClient.Item();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property media (base name: "media")', function() {
-      // uncomment below and update the code to test the property media
-      //var instane = new InventoryClient.Item();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property buy (base name: "Buy")', function() {
-      // uncomment below and update the code to test the property buy
-      //var instane = new InventoryClient.Item();
+    it('should have the property recurpric (base name: "recurpric")', function() {
+      // uncomment below and update the code to test the property recurpric
+      //var instane = new InventoryClient.ServiceRequest();
       //expect(instance).to.be();
     });
 

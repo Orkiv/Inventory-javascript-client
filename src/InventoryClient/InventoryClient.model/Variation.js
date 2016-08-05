@@ -34,7 +34,7 @@
     if (!root.InventoryClient) {
       root.InventoryClient = {};
     }
-    root.InventoryClient.Dictionary = factory(root.InventoryClient.ApiClient);
+    root.InventoryClient.Variation = factory(root.InventoryClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -43,39 +43,63 @@
 
 
   /**
-   * The Dictionary model module.
-   * @module InventoryClient/InventoryClient.model/Dictionary
+   * The Variation model module.
+   * @module InventoryClient/InventoryClient.model/Variation
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Dictionary</code>.
-   * @alias module:InventoryClient/InventoryClient.model/Dictionary
+   * Constructs a new <code>Variation</code>.
+   * @alias module:InventoryClient/InventoryClient.model/Variation
    * @class
-   * @extends Object
    */
   var exports = function() {
     var _this = this;
 
-    return _this;
+
+
+
   };
 
   /**
-   * Constructs a <code>Dictionary</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Variation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:InventoryClient/InventoryClient.model/Dictionary} obj Optional instance to populate.
-   * @return {module:InventoryClient/InventoryClient.model/Dictionary} The populated <code>Dictionary</code> instance.
+   * @param {module:InventoryClient/InventoryClient.model/Variation} obj Optional instance to populate.
+   * @return {module:InventoryClient/InventoryClient.model/Variation} The populated <code>Variation</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      ApiClient.constructFromObject(data, obj, String);
 
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
+      if (data.hasOwnProperty('priceChange')) {
+        obj['priceChange'] = ApiClient.convertToType(data['priceChange'], 'Number');
+      }
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
+      }
     }
     return obj;
   }
 
+  /**
+   * Variation name
+   * @member {String} name
+   */
+  exports.prototype['name'] = undefined;
+  /**
+   * New price to set if variation is set (in hundreds)
+   * @member {Number} priceChange
+   */
+  exports.prototype['priceChange'] = undefined;
+  /**
+   * System ID of variation
+   * @member {String} id
+   */
+  exports.prototype['id'] = undefined;
 
 
 

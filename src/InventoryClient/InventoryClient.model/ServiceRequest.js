@@ -34,7 +34,7 @@
     if (!root.InventoryClient) {
       root.InventoryClient = {};
     }
-    root.InventoryClient.EventRequest = factory(root.InventoryClient.ApiClient);
+    root.InventoryClient.ServiceRequest = factory(root.InventoryClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -43,14 +43,14 @@
 
 
   /**
-   * The EventRequest model module.
-   * @module InventoryClient/InventoryClient.model/EventRequest
+   * The ServiceRequest model module.
+   * @module InventoryClient/InventoryClient.model/ServiceRequest
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>EventRequest</code>.
-   * @alias module:InventoryClient/InventoryClient.model/EventRequest
+   * Constructs a new <code>ServiceRequest</code>.
+   * @alias module:InventoryClient/InventoryClient.model/ServiceRequest
    * @class
    */
   var exports = function() {
@@ -59,47 +59,56 @@
 
 
 
+
   };
 
   /**
-   * Constructs a <code>EventRequest</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ServiceRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:InventoryClient/InventoryClient.model/EventRequest} obj Optional instance to populate.
-   * @return {module:InventoryClient/InventoryClient.model/EventRequest} The populated <code>EventRequest</code> instance.
+   * @param {module:InventoryClient/InventoryClient.model/ServiceRequest} obj Optional instance to populate.
+   * @return {module:InventoryClient/InventoryClient.model/ServiceRequest} The populated <code>ServiceRequest</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('url')) {
-        obj['url'] = ApiClient.convertToType(data['url'], 'String');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('serviceid')) {
-        obj['serviceid'] = ApiClient.convertToType(data['serviceid'], 'String');
+      if (data.hasOwnProperty('desc')) {
+        obj['desc'] = ApiClient.convertToType(data['desc'], 'String');
       }
-      if (data.hasOwnProperty('postbody')) {
-        obj['postbody'] = ApiClient.convertToType(data['postbody'], 'String');
+      if (data.hasOwnProperty('price')) {
+        obj['price'] = ApiClient.convertToType(data['price'], 'String');
+      }
+      if (data.hasOwnProperty('recurpric')) {
+        obj['recurpric'] = ApiClient.convertToType(data['recurpric'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * URL for the server to request on successful subscription to specified service
-   * @member {String} url
+   * Name of service
+   * @member {String} name
    */
-  exports.prototype['url'] = undefined;
+  exports.prototype['name'] = undefined;
   /**
-   * ServiceID to bind event to.
-   * @member {String} serviceid
+   * Richtext description of item
+   * @member {String} desc
    */
-  exports.prototype['serviceid'] = undefined;
+  exports.prototype['desc'] = undefined;
   /**
-   * Valid JSON of Key-value parameters to post to url
-   * @member {String} postbody
+   * Upfront cost of service in hundreds
+   * @member {String} price
    */
-  exports.prototype['postbody'] = undefined;
+  exports.prototype['price'] = undefined;
+  /**
+   * Recurring monthly cost of subscription
+   * @member {String} recurpric
+   */
+  exports.prototype['recurpric'] = undefined;
 
 
 

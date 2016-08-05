@@ -25,32 +25,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['InventoryClient/ApiClient', 'InventoryClient/InventoryClient.model/Variation'], factory);
+    define(['InventoryClient/ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Variation'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.InventoryClient) {
       root.InventoryClient = {};
     }
-    root.InventoryClient.Item = factory(root.InventoryClient.ApiClient, root.InventoryClient.Variation);
+    root.InventoryClient.ItemRequest = factory(root.InventoryClient.ApiClient);
   }
-}(this, function(ApiClient, Variation) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The Item model module.
-   * @module InventoryClient/InventoryClient.model/Item
+   * The ItemRequest model module.
+   * @module InventoryClient/InventoryClient.model/ItemRequest
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Item</code>.
-   * @alias module:InventoryClient/InventoryClient.model/Item
+   * Constructs a new <code>ItemRequest</code>.
+   * @alias module:InventoryClient/InventoryClient.model/ItemRequest
    * @class
    */
   var exports = function() {
@@ -63,17 +63,14 @@
 
 
 
-
-
-
   };
 
   /**
-   * Constructs a <code>Item</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ItemRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:InventoryClient/InventoryClient.model/Item} obj Optional instance to populate.
-   * @return {module:InventoryClient/InventoryClient.model/Item} The populated <code>Item</code> instance.
+   * @param {module:InventoryClient/InventoryClient.model/ItemRequest} obj Optional instance to populate.
+   * @return {module:InventoryClient/InventoryClient.model/ItemRequest} The populated <code>ItemRequest</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -97,17 +94,8 @@
       if (data.hasOwnProperty('price')) {
         obj['price'] = ApiClient.convertToType(data['price'], 'String');
       }
-      if (data.hasOwnProperty('variations')) {
-        obj['variations'] = ApiClient.convertToType(data['variations'], [Variation]);
-      }
       if (data.hasOwnProperty('quantity')) {
         obj['quantity'] = ApiClient.convertToType(data['quantity'], 'String');
-      }
-      if (data.hasOwnProperty('media')) {
-        obj['media'] = ApiClient.convertToType(data['media'], ['String']);
-      }
-      if (data.hasOwnProperty('Buy')) {
-        obj['Buy'] = ApiClient.convertToType(data['Buy'], 'String');
       }
     }
     return obj;
@@ -144,24 +132,10 @@
    */
   exports.prototype['price'] = undefined;
   /**
-   * @member {Array.<module:InventoryClient/InventoryClient.model/Variation>} variations
-   */
-  exports.prototype['variations'] = undefined;
-  /**
    * Inventory quantity
    * @member {String} quantity
    */
   exports.prototype['quantity'] = undefined;
-  /**
-   * Array of item media
-   * @member {Array.<String>} media
-   */
-  exports.prototype['media'] = undefined;
-  /**
-   * Link to checkout page of item
-   * @member {String} Buy
-   */
-  exports.prototype['Buy'] = undefined;
 
 
 

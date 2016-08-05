@@ -129,6 +129,36 @@
         done();
       });
     });
+    describe('itemGet', function() {
+      it('should call itemGet successfully', function(done) {
+        //uncomment below and update the code to test itemGet
+        //instance.itemGet(pet, function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('itemMediaDelete', function() {
+      it('should call itemMediaDelete successfully', function(done) {
+        //uncomment below and update the code to test itemMediaDelete
+        //instance.itemMediaDelete(pet, function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('itemMediaPost', function() {
+      it('should call itemMediaPost successfully', function(done) {
+        //uncomment below and update the code to test itemMediaPost
+        //instance.itemMediaPost(pet, function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('itemPut', function() {
       it('should call itemPut successfully', function(done) {
         //uncomment below and update the code to test itemPut
@@ -159,16 +189,6 @@
         done();
       });
     });
-    describe('itemsallfieldsPost', function() {
-      it('should call itemsallfieldsPost successfully', function(done) {
-        //uncomment below and update the code to test itemsallfieldsPost
-        //instance.itemsallfieldsPost(pet, function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('ordersPost', function() {
       it('should call ordersPost successfully', function(done) {
         //uncomment below and update the code to test ordersPost
@@ -179,20 +199,20 @@
         done();
       });
     });
-    describe('queryPost', function() {
-      it('should call queryPost successfully', function(done) {
-        //uncomment below and update the code to test queryPost
-        //instance.queryPost(pet, function(error) {
+    describe('ordersServicesPost', function() {
+      it('should call ordersServicesPost successfully', function(done) {
+        //uncomment below and update the code to test ordersServicesPost
+        //instance.ordersServicesPost(pet, function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('queryallfieldsPost', function() {
-      it('should call queryallfieldsPost successfully', function(done) {
-        //uncomment below and update the code to test queryallfieldsPost
-        //instance.queryallfieldsPost(pet, function(error) {
+    describe('queryPost', function() {
+      it('should call queryPost successfully', function(done) {
+        //uncomment below and update the code to test queryPost
+        //instance.queryPost(pet, function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -219,6 +239,16 @@
         done();
       });
     });
+    describe('servicesOpenGet', function() {
+      it('should call servicesOpenGet successfully', function(done) {
+        //uncomment below and update the code to test servicesOpenGet
+        //instance.servicesOpenGet(pet, function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('servicesPost', function() {
       it('should call servicesPost successfully', function(done) {
         //uncomment below and update the code to test servicesPost
@@ -233,6 +263,46 @@
       it('should call servicesPut successfully', function(done) {
         //uncomment below and update the code to test servicesPut
         //instance.servicesPut(pet, function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('variationDelete', function() {
+      it('should call variationDelete successfully', function(done) {
+        //uncomment below and update the code to test variationDelete
+        //instance.variationDelete(pet, function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('variationGet', function() {
+      it('should call variationGet successfully', function(done) {
+        //uncomment below and update the code to test variationGet
+        //instance.variationGet(pet, function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('variationPost', function() {
+      it('should call variationPost successfully', function(done) {
+        //uncomment below and update the code to test variationPost
+        //instance.variationPost(pet, function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('variationPut', function() {
+      it('should call variationPut successfully', function(done) {
+        //uncomment below and update the code to test variationPut
+        //instance.variationPut(pet, function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

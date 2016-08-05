@@ -39,7 +39,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new InventoryClient.Dictionary();
+    instance = new InventoryClient.Variation();
   });
 
   var getProperty = function(object, getter, property) {
@@ -58,11 +58,29 @@
       object[property] = value;
   }
 
-  describe('Dictionary', function() {
-    it('should create an instance of Dictionary', function() {
-      // uncomment below and update the code to test Dictionary
-      //var instane = new InventoryClient.Dictionary();
-      //expect(instance).to.be.a(InventoryClient.Dictionary);
+  describe('Variation', function() {
+    it('should create an instance of Variation', function() {
+      // uncomment below and update the code to test Variation
+      //var instane = new InventoryClient.Variation();
+      //expect(instance).to.be.a(InventoryClient.Variation);
+    });
+
+    it('should have the property name (base name: "name")', function() {
+      // uncomment below and update the code to test the property name
+      //var instane = new InventoryClient.Variation();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property priceChange (base name: "priceChange")', function() {
+      // uncomment below and update the code to test the property priceChange
+      //var instane = new InventoryClient.Variation();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property id (base name: "id")', function() {
+      // uncomment below and update the code to test the property id
+      //var instane = new InventoryClient.Variation();
+      //expect(instance).to.be();
     });
 
   });
